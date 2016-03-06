@@ -1,4 +1,4 @@
-{% extends "rango/base.html" %}
+{% extends 'rango/base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +6,20 @@
     <title></title>
 </head>
 <body>
-    {%block body_block %}
-    <h1>Login</h1>
-    <form method=""post" action="."
-        {% csrf_token %}
-        {{ form.as_p}}
-        <input type="submit" value="Log in" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+  {% block body_block %}
 
-    <a>Not a member? <a href=""{% url 'registration_register' %}Register</a>!</p>
-    {% endblock %}
+  <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+
+  <form class="form-signin" role="form" method="post" action=".">
+  {% csrf_token %}
+
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <input class="form-control" placeholder="Username" id="id_username" maxlength="254" name="username" type="text" required autofocus=""/>
+  <input type="password" class="form-control" placeholder="Password" id="id_password" name="password"  required />
+  
+      <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" >Sign in</button>
+      </form>
+
+{% endblock %}
 </body>
 </html>
